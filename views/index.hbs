@@ -1,0 +1,27 @@
+{{#if user}}
+ <p>Welcome, {{user.name}}! <a href="/logout">Logout</a></p>
+ <a href="/cart">View Cart</a>
+{{else}}
+ <a href="/login">Login</a>
+{{/if}}
+
+<h1>{{title}}</h1>
+
+<div>
+ <h2>Featured Product:</h2>
+ <p>Title: {{item.title}}</p>
+ <p>Category: {{item.category}}</p>
+ <p>Selling Price: ${{item.selling_price}}</p>
+ <p>Seller: {{item.seller}}</p>
+ {{#if user}}
+    <form action="/add-to-cart" method="post">
+   <input type="hidden" name="productId" value="{{item._id}}">
+   <button type="submit">Add to Cart</button>
+ </form>
+ {{/if}}
+</div>
+<div>
+ <h2>Top Review:</h2>
+ <p>Reviewer Name: {{review.reviewername}}</p>
+ <p>Review Text: {{review.reviewtext}}</p>
+</div>
